@@ -1,13 +1,14 @@
 package com.github.kkisic;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import com.github.kkisic.cofiguration.SystemConfiguration;
+import enkan.system.EnkanSystem;
+
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        EnkanSystem system = new SystemConfiguration().create();
+        Runtime.getRuntime().addShutdownHook(new Thread(system::stop));
+        system.start();
     }
 }
