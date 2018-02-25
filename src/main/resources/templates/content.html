@@ -47,7 +47,7 @@
     <div class="ui divider"></div>
 
     <div class="ui container left aligned">
-        <tr th:each="post:${form}">
+        <tr th:each="post:${postList}">
             <div class="ui comments">
                 <div class="comment">
                     <a class="author" th:text="${post.author}"></a>
