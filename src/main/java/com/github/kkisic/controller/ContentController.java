@@ -55,6 +55,9 @@ public class ContentController {
         Post post = beansConverter.createFrom(postForm, Post.class);
         postDao.insert(post);
 
-        return templateEngine.render("content");
+        HttpResponse res = HttpResponseUtils.redirect(
+                "/content",
+                HttpResponseUtils.RedirectStatusCode.FOUND);
+        return res;
     }
 }
