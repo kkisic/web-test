@@ -87,7 +87,7 @@
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
-            <artifactId>enkan-component-freemarker</artifactId>
+            <artifactId>enkan-component-thymeleaf</artifactId>
             <version>${enkan.version}</version>
         </dependency>
 
