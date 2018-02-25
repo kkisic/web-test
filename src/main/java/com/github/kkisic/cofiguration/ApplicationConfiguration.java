@@ -1,5 +1,6 @@
 package com.github.kkisic.cofiguration;
 
+import com.github.kkisic.controller.ContentController;
 import com.github.kkisic.controller.DbTestController;
 import enkan.Application;
 import enkan.application.WebApplication;
@@ -29,6 +30,9 @@ public class ApplicationConfiguration implements enkan.config.ApplicationFactory
         Routes routes = Routes.define(r -> {
             r.get("/").to(IndexController.class, "index");
             r.get("/dbtest").to(DbTestController.class, "index");
+
+            r.get("/content").to(ContentController.class, "get");
+            r.post("/content").to(ContentController.class, "post");
         }).compile();
 
         app.use(new DefaultCharsetMiddleware());
