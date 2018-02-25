@@ -8,12 +8,17 @@ import enkan.component.BeansConverter;
 import enkan.component.doma2.DomaProvider;
 import enkan.data.HttpResponse;
 import enkan.util.HttpResponseUtils;
+import kotowari.component.TemplateEngine;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.sql.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ContentController {
+    @Inject
+    private TemplateEngine templateEngine;
 
     @Inject
     private BeansConverter beansConverter;
@@ -29,10 +34,18 @@ public class ContentController {
     }
 
     public HttpResponse get(){
-        HttpResponse res = HttpResponseUtils.redirect(
-                "assets/content.html",
-                HttpResponseUtils.RedirectStatusCode.FOUND);
-        return res;
+        List<PostForm> list = new LinkedList<PostForm>();
+        for(int i = 0; i < 4; i++) {
+            PostForm form = new PostForm();
+            form.setId(i);
+            form.setAuthor("a");
+            form.setTime(new Date(System.currentTimeMillis()));
+            form.setBody0("aaaaa");
+            form.setBody1("bbbbbbb");
+            form.setBody2("ccccc");
+            list.add(form);
+        }
+        return templateEngine.render("content", "form", list);
     }
 
     public HttpResponse post(PostForm postForm){
@@ -42,9 +55,6 @@ public class ContentController {
         Post post = beansConverter.createFrom(postForm, Post.class);
         postDao.insert(post);
 
-        HttpResponse res = HttpResponseUtils.redirect(
-                "assets/content.html",
-                HttpResponseUtils.RedirectStatusCode.FOUND);
-        return res;
+        return templateEngine.render("content");
     }
 }

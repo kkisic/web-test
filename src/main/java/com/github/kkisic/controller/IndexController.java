@@ -2,13 +2,16 @@ package com.github.kkisic.controller;
 
 import enkan.data.HttpResponse;
 import enkan.util.HttpResponseUtils;
+import kotowari.component.TemplateEngine;
 
+import javax.inject.Inject;
 import java.io.File;
 
 public class IndexController {
+    @Inject
+    private TemplateEngine templateEngine;
 
     public HttpResponse index(){
-        HttpResponse res = HttpResponseUtils.redirect("assets/index.html", HttpResponseUtils.RedirectStatusCode.FOUND);
-        return res;
+        return templateEngine.render("index");
     }
 }

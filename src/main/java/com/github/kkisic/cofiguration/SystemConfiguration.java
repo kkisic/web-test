@@ -5,10 +5,10 @@ import enkan.collection.OptionMap;
 import enkan.component.ApplicationComponent;
 import enkan.component.doma2.DomaProvider;
 import enkan.component.flyway.FlywayMigration;
-import enkan.component.freemarker.FreemarkerTemplateEngine;
 import enkan.component.hikaricp.HikariCPComponent;
 import enkan.component.jackson.JacksonBeansConverter;
 import enkan.component.undertow.UndertowComponent;
+import enkan.component.thymeleaf.ThymeleafTemplateEngine;
 import enkan.system.EnkanSystem;
 
 import static enkan.component.ComponentRelationship.component;
@@ -21,7 +21,7 @@ public class SystemConfiguration implements enkan.config.EnkanSystemFactory {
                 "doma", new DomaProvider(),
                 "jackson", new JacksonBeansConverter(),
                 "flyway", new FlywayMigration(),
-                "template", new FreemarkerTemplateEngine(),
+                "template", new ThymeleafTemplateEngine(),
                 "datasource", new HikariCPComponent(OptionMap.of("uri", "jdbc:h2:mem:test")),
                 "app", new ApplicationComponent(ApplicationConfiguration.class.getName()),
                 "http", builder(new UndertowComponent())

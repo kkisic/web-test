@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -14,8 +14,8 @@
 </head>
 <body>
 <div class="ui fixed inverted menu">
-    <a class="item" href="/assets/index.html">Kawayangi</a>
-    <a class="item" href="/assets/content.html">Content</a>
+    <a class="item" href="/">Kawayangi</a>
+    <a class="item" href="/content">Content</a>
     <a class="item" href="https://github.com/kkisic/web-test">Source</a>
 </div>
 
@@ -47,6 +47,20 @@
     <div class="ui divider"></div>
 
     <div class="ui container left aligned">
+        <tr th:each="post:${form}">
+            <div class="ui comments">
+                <div class="comment">
+                    <a class="author" th:text="${post.author}"></a>
+                    <div class="metadata">
+                        <span class="data" th:text="${post.time}"></span>
+                    </div>
+                    <div class="text" th:text="${post.body0}"></div>
+                    <div class="text" th:text="${post.body1}"></div>
+                    <div class="text" th:text="${post.body2}"></div>
+                </div>
+            </div>
+        </tr>
+
         <div class="ui comments">
             <div class="comment">
                 <a class="author">Hoge</a>
@@ -70,6 +84,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 </body>
