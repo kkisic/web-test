@@ -21,10 +21,24 @@
 
 <div class="ui main container">
     <div class="ui container left aligned">
-        <form class="ui form">
-            <div class="inline fields">
-                <div class="two wide field"><input type="text" name="author" placeholder="hoge"></div>
-                <div class="eight wide field"><input type="text" name="senryu" placeholder="what's up?"></div>
+        <form class="ui form" method="post" action="/content">
+            <div class="fields">
+                <div class="two wide field">
+                    <label>Handle Name</label>
+                    <input type="text" name="author" placeholder="author">
+                </div>
+                <div class="two wide field">
+                    <label>Kaminoku</label>
+                    <input type="text" name="body0" placeholder="******">
+                </div>
+                <div class="three wide field">
+                    <label>Nakanoku</label>
+                    <input type="text" name="body1" placeholder="*******">
+                </div>
+                <div class="two wide field">
+                    <label>Shimonoku</label>
+                    <input type="text" name="body2" placeholder="*****">
+                </div>
                 <button class="ui olive button">send</button>
             </div>
         </form>
