@@ -6,8 +6,9 @@
 
     <title>Kawayanagi</title>
 
-    <script src="/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="/assets/js/semantic.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/semantic.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jit.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/assets/css/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
@@ -21,23 +22,23 @@
 
 <div class="ui main container">
     <div class="ui container left aligned">
-        <form class="ui form" method="post" action="/content">
+        <form class="ui form" method="post" action="/content" onsubmit="return(checkOnSubmit())">
             <div class="fields">
-                <div class="two wide field">
+                <div class="two wide field" id="author">
                     <label>Handle Name</label>
-                    <input type="text" name="author" placeholder="author">
+                    <input type="text" name="author" placeholder="author" onchange="checkAuthor()">
                 </div>
-                <div class="two wide field">
+                <div class="two wide field" id="kaminoku">
                     <label>Kaminoku</label>
-                    <input type="text" name="body0" placeholder="******">
+                    <input type="text" name="body0" placeholder="******" onchange="checkBody0()">
                 </div>
-                <div class="three wide field">
+                <div class="three wide field" id="nakanoku">
                     <label>Nakanoku</label>
-                    <input type="text" name="body1" placeholder="*******">
+                    <input type="text" name="body1" placeholder="*******" onchange="checkBody1()">
                 </div>
-                <div class="two wide field">
+                <div class="two wide field" id="shimonoku">
                     <label>Shimonoku</label>
-                    <input type="text" name="body2" placeholder="*****">
+                    <input type="text" name="body2" placeholder="*****" onchange="checkBody2()">
                 </div>
                 <button class="ui olive button">send</button>
             </div>
