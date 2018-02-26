@@ -38,11 +38,11 @@ public class ContentController {
     }
 
     public HttpResponse post(PostForm postForm){
-        // TODO: do validation
-        postForm.setTime(new Date(System.currentTimeMillis()));
-
-        Post post = beansConverter.createFrom(postForm, Post.class);
-        postDao.insert(post);
+        if(!postForm.hasErrors()) {
+            postForm.setTime(new Date(System.currentTimeMillis()));
+            Post post = beansConverter.createFrom(postForm, Post.class);
+            postDao.insert(post);
+        }
 
         HttpResponse res = HttpResponseUtils.redirect(
                 "/content",
